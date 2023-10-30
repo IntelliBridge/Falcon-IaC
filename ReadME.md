@@ -75,6 +75,7 @@ Follow these steps to provision the Jenkins EC2 instance:
 8. **Terraform Initialization:** Run the following Terraform commands to initialize the project and download the necessary providers:
 
    ```shell
+   cd Jenkins/
    terraform init
    ```
 
