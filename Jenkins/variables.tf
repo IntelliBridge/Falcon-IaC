@@ -33,13 +33,13 @@ variable "volume_size" {
 variable "allowed_cidr" {
   description = "The CIDR block for allowed access."
   type        = string
-  default     = "50.169.74.22/32"
+  default     = ""
 }
 
 variable "vpc_id" {
   description = "The AWS VPC ID to host the Jenkins Server."
   type        = string
-  default     = "vpc-0e9dc691ee99b2d99"
+  default     = ""
 }
 
 variable "public_ip" {
