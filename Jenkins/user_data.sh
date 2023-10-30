@@ -23,6 +23,17 @@ wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
 rpm --import https://pkg.jenkins.io/redhat/jenkins.io-2023.key
 yum install fontconfig java-17-openjdk -y
 yum install jenkins -y
+
+
+## copy over the pipeline config
+## set the Jenkins permisions on the pipeline config directory
+
+mkdir /var/lib/jenkins/jobs/Falcon
+git clone https://github.com/IntelliBridge/Falcon-IaC.git
+cp Falcon-IaC/Pipeline/config.xml /var/lib/jenkins/jobs/Falcon/config.xml
+chown jenkins:jenkins -R /var/lib/jenkins/jobs/Falcon
+
+# Start the Jenkins Service
 systemctl start jenkins
 systemctl enable jenkins
 
@@ -61,12 +72,3 @@ curl -u admin:admin -X POST "http://localhost:9000/api/users/change_password?log
 wget -O sonarscanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip?_gl=1*14x1mjd*_gcl_au*NDA2NjIzNzcyLjE2OTg1Mjc3MDQ.*_ga*MTUyNzU5NTMzLjE2OTg1Mjc3MDQ.*_ga_9JZ0GZ5TC6*MTY5ODUyNzcwMy4xLjAuMTY5ODUyNzc1OC41LjAuMA..
 unzip sonarscanner-cli.zip
 mv sonar-scanner-5.0.1.3006-linux /tools/sonarscanner
-
-
-
-
-
-# Additional commands:
-# The following commands are commented out, they can be used for specific purposes as needed.
-# wget http://18.118.241.86:8080/jnlpJars/jenkins-cli.jar
-# java -jar jenkins-cli.jar -s http://18.118.241.86:8080/ install-plugin
