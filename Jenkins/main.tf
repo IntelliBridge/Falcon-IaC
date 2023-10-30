@@ -38,7 +38,7 @@ resource "aws_instance" "Jenkins" {
 
 
 # Wait until EC2 is created, then login and fetch the Jenkins Password
-resource "null_resource" "jenkins_password1" {
+resource "null_resource" "jenkins_password" {
 
   connection {
       type        = "ssh"
@@ -56,7 +56,9 @@ resource "null_resource" "jenkins_password1" {
   inline = [
     "sleep 480",
     "echo -e \"Jenkins URL: ${aws_instance.Jenkins.public_ip}:8080\"",
-    "echo -e \"Jenkins Password: $(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)\"", 
+    "echo -e \"Jenkins Admin Password: $(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)\"",
+    "echo -e \"Sonarqube URL: ${aws_instance.Jenkins.public_ip}:9000\"",
+    "echo -e \"Sonarqube Admin Password: MySonarAdminPassword\"",
     ]
   }
 }
