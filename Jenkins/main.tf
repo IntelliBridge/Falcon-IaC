@@ -38,31 +38,23 @@ resource "aws_instance" "Jenkins" {
 
 
 # Wait until EC2 is created, then login and fetch the Jenkins Password
-resource "null_resource" "jenkins_password" {
+resource "null_resource" "jenkins_password1" {
 
   connection {
       type        = "ssh"
       host        = aws_instance.Jenkins.public_ip
-      private_key = file("${path.cwd}/../Falcon-IB.pem")
+      private_key = file("${path.cwd}/../ssh-keys/${var.key_name}.pem")
       user        = "ec2-user"
   }
 
  ## 1. Connect to the host
- ## 2. copy over the pipeline config
- ## 3. set the Jenkins permisions ont he pipeline config directory
- ## 4. Fetch the Jenkins URL 
- ## 5. Fetch the Jenkins Admin Password
-
-
-    # "mkdir /var/lib/jenkins/jobs/Falcon",
-    # "scp -i ${path.cwd}/../Falcon.pem ${path.cwd}/../pipeline/config.xml ec2-user@${aws_instance.Jenkins.public_ip}:/var/lib/jenkins/jobs/Falcon",
-    # "chown jenkins:jenkins -R /var/lib/jenkins/jobs/Falcon",
-
+ ## 2. Fetch the Jenkins URL 
+ ## 3. Fetch the Jenkins Admin Password
 
   provisioner "remote-exec" {
 
   inline = [
-    # "sleep 480",
+    "sleep 480",
     "echo -e \"Jenkins URL: ${aws_instance.Jenkins.public_ip}:8080\"",
     "echo -e \"Jenkins Password: $(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)\"", 
     ]
