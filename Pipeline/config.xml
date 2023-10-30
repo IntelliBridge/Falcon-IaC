@@ -1,0 +1,60 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@1360.vc6700e3136f5">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@2.2150.v4cfd8916915c"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@2.2150.v4cfd8916915c">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+      <options/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+  </actions>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@3806.va_3a_6988277b_2">
+    <script>pipeline {
+    agent any
+
+
+    stages {
+        stage(&apos;Build&apos;) {
+            steps {
+                // Get some code from a GitHub repository
+                git &apos;https://github.com/aws-samples/api-gateway-secure-pet-store.git&apos;
+
+                // Run Maven
+                sh &quot;mvn -Dmaven.test.failure.ignore=true clean package&quot;
+
+            }}
+
+            stage(&apos;Sonarqube Scan&apos;){
+                steps {
+                    sh &apos;&apos;&apos;/tools/sonarscanner/bin/sonar-scanner \
+                        -Dsonar.projectKey=pet-store \
+                        -Dsonar.projectName=pet-store \
+                        -Dsonar.sources=src/main/java/ \
+                        -Dsonar.language=java \
+                        -Dsonar.host.url=http://localhost:9000 \
+                        -Dsonar.login=admin \
+                        -Dsonar.java.binaries=**/**/**/**/**/**/**  \
+                        -Dsonar.password=MySonarAdminPassword \
+                        -Dsonar.sslVerification=false
+                    &apos;&apos;&apos;
+                }
+            }
+            // post {
+            //     // If Maven was able to run the tests, even if some of the test
+            //     // failed, record the test results and archive the jar file.
+            //     success {
+            //         junit &apos;**/target/surefire-reports/TEST-*.xml&apos;
+            //         archiveArtifacts &apos;target/*.jar&apos;
+            //     }
+            // }
+        }
+    }
+</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
