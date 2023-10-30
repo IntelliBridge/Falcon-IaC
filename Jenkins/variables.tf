@@ -21,7 +21,7 @@ variable "ami_id" {
 variable "key_name" {
   description = "The name of the SSH key pair used for EC2 instances."
   type        = string
-  default     = "Falcon-IB.pem"
+  default     = "Falcon"
 }
 
 variable "volume_size" {
