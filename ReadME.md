@@ -68,7 +68,7 @@ Follow these steps to provision the Jenkins EC2 instance:
 
 6. **Updated the Variables:**
 
-   - Update your AWS region to your desired region (AWS-Region)[https://github.com/IntelliBridge/Falcon-IaC/blob/4decb21e599869fe9eb80691e1d686e02b89bc33/Jenkins/variables.tf#L5]
+   - Update your AWS region to your desired region [AWS-Region](https://github.com/IntelliBridge/Falcon-IaC/blob/4decb21e599869fe9eb80691e1d686e02b89bc33/Jenkins/variables.tf#L5)
    - Whitelist your IP address in [allowed_cidr](https://github.com/IntelliBridge/Falcon-IaC/blob/917b27ebff35f2dcc13fab56195f16d2121202c5/Jenkins/variables.tf#L36)
    - add your VPC_ID to [VPC_id](https://github.com/IntelliBridge/Falcon-IaC/blob/917b27ebff35f2dcc13fab56195f16d2121202c5/Jenkins/variables.tf#L42)
 
