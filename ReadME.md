@@ -57,18 +57,24 @@ Follow these steps to provision the Jenkins EC2 instance:
 1. **Clone the Repository:** Clone this Terraform configuration repository to your local system.
 
 2. **Customize Variables:** Customize the `variables.tf` file to match your specific requirements. You can define variable values in a `.tfvars` file for easy configuration management.
+3. **AWS Credentials:** Ensure that your AWS credentials are properly configured: 
+    ```shell 
+    aws configure 
+    ```
 
-3. **Create AWS Keys:** Create AWS EC2 Keys called ```Falcon.pem``` and add them to the root directory of this project.
+    and accessible to Terraform. Protect sensitive information and credentials as best practice.
 
-4. **Whitelist your IP & add your VPC_id:** Whitelist your IP address in [allowed_cidr](https://github.com/IntelliBridge/Falcon-IaC/blob/917b27ebff35f2dcc13fab56195f16d2121202c5/Jenkins/variables.tf#L36) and add your VPC_ID to [VPC_id](https://github.com/IntelliBridge/Falcon-IaC/blob/917b27ebff35f2dcc13fab56195f16d2121202c5/Jenkins/variables.tf#L42)
+5. **Create AWS Keys:** Create AWS EC2 Keys called ```Falcon.pem``` and add them to the root directory of this project.
 
-5. **Terraform Initialization:** Run the following Terraform commands to initialize the project and download the necessary providers:
+6. **Whitelist your IP & add your VPC_id:** Whitelist your IP address in [allowed_cidr](https://github.com/IntelliBridge/Falcon-IaC/blob/917b27ebff35f2dcc13fab56195f16d2121202c5/Jenkins/variables.tf#L36) and add your VPC_ID to [VPC_id](https://github.com/IntelliBridge/Falcon-IaC/blob/917b27ebff35f2dcc13fab56195f16d2121202c5/Jenkins/variables.tf#L42)
+
+7. **Terraform Initialization:** Run the following Terraform commands to initialize the project and download the necessary providers:
 
    ```shell
    terraform init
    ```
 
-6. **Terraform Apply:** Execute the following command to apply the configuration and create the specified AWS resources:
+8. **Terraform Apply:** Execute the following command to apply the configuration and create the specified AWS resources:
 
    ```shell
    terraform apply
@@ -76,7 +82,7 @@ Follow these steps to provision the Jenkins EC2 instance:
 
    Terraform will prompt for confirmation before making any changes. Type 'yes' to proceed.
 
-7. **Access Jenkins:** After the EC2 instance is provisioned, access Jenkins by connecting to the public IP address and port 8080. The Jenkins URL and the initial admin password will be displayed in the Terraform output.
+9. **Access Jenkins:** After the EC2 instance is provisioned, access Jenkins by connecting to the public IP address and port 8080. The Jenkins URL and the initial admin password will be displayed in the Terraform output.
 
 ## Cleanup
 
