@@ -94,14 +94,5 @@ terraform destroy
 
 Please note that this will permanently remove the resources created by this configuration.
 
-## Additional Notes
-
-Here are some additional considerations:
-
-- **AWS Credentials:** Ensure that your AWS credentials are properly configured and accessible to Terraform. Protect sensitive information and credentials as best practice.
-
-- **Sensitive Data:** The initial Jenkins admin password is sensitive and should be treated with care. Ensure it's securely stored and accessed.
-
-- **Customization:** This README provides a basic overview of the Terraform configuration. Depending on your specific requirements and security practices, consider further customization and enhancements.
 
 For more detailed documentation, advanced customization options, and in-depth information, refer to the [Terraform documentation](https://www.terraform.io/docs/index.html) and the official [AWS documentation](https://aws.amazon.com/documentation/).
