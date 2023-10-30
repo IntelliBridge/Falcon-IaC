@@ -57,12 +57,12 @@ Follow these steps to provision the Jenkins EC2 instance:
 1. **Clone the Repository:** Clone this Terraform configuration repository to your local system.
 
 2. **Customize Variables:** Customize the `variables.tf` file to match your specific requirements. You can define variable values in a `.tfvars` file for easy configuration management.
-3. **AWS Credentials:** Ensure that your AWS credentials are properly configured: 
-    ```shell 
+3. **AWS Credentials:** Ensure that your AWS credentials are properly configured and accessible to Terraform 
+   
+     ```shell 
     aws configure 
     ```
 
-    and accessible to Terraform. Protect sensitive information and credentials as best practice.
 
 5. **Create AWS Keys:** Create AWS EC2 Keys called ```Falcon.pem``` and add them to the root directory of this project.
 
