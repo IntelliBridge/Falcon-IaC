@@ -48,8 +48,8 @@ resource "null_resource" "jenkins_password" {
   }
 
  ## 1. Connect to the host
- ## 2. Check to see if the Jenkins Admin Password is ready, once it's ready fetch the Jenkins URL 
- ## 3. Fetch the Jenkins Admin Password
+ ## 2. Check to see if the Jenkins Admin Password is ready, once it's ready fetch the Jenkins URL & Password 
+ ## 3. Fetch the Sonarqube URL & Admin Password
 
   provisioner "remote-exec" {
 
