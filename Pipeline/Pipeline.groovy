@@ -29,5 +29,15 @@ pipeline {
                 }
             }
 
+        // stage('Owasp Zap Scan'){
+        //         steps {
+        //             sh '''/tools/zap/zap.sh \
+        // Swap port with Application build port
+        //                  -quickscan http://localhost:8080 \
+        //                  -port 8090  
+        //             '''
+        //         }
+        //     }
+
         }
     }
