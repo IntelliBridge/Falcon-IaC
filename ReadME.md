@@ -1,6 +1,6 @@
 # AWS Jenkins EC2 Instance Provisioning with Terraform
 
-This README provides a detailed guide for provisioning an AWS EC2 instance for Jenkins using Terraform. It outlines the prerequisites, configuration details, and usage instructions. The Terraform configuration deploys an EC2 instance, sets up a security group for Jenkins, and retrieves the Jenkins URL and initial admin password. 
+This README provides a detailed guide for provisioning an AWS EC2 instance for Jenkins using Terraform. It outlines the prerequisites, configuration details, and usage instructions. The Terraform configuration deploys an EC2 instance, sets up a security group for Jenkins, and retrieves the Jenkins & Sonarqube URL and initial admin password. 
 
 ## Prerequisites
 
