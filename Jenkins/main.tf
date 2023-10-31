@@ -48,13 +48,13 @@ resource "null_resource" "jenkins_password" {
   }
 
  ## 1. Connect to the host
- ## 2. Fetch the Jenkins URL 
+ ## 2. Check to see if the Jenkins Admin Password is ready, once it's ready fetch the Jenkins URL 
  ## 3. Fetch the Jenkins Admin Password
 
   provisioner "remote-exec" {
 
   inline = [
-    "sleep 480",
+    "while [ ! -e /var/lib/jenkins/secrets/initialAdminPassword ]; do sleep 5; done; cat /var/lib/jenkins/secrets/initialAdminPassword",
     "echo -e \"Jenkins URL: ${aws_instance.Jenkins.public_ip}:8080\"",
     "echo -e \"Jenkins Admin Password: $(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)\"",
     "echo -e \"Sonarqube URL: ${aws_instance.Jenkins.public_ip}:9000\"",
