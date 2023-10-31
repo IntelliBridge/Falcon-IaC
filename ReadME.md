@@ -88,6 +88,7 @@ Follow these steps to provision the Jenkins EC2 instance:
    Terraform will prompt for confirmation before making any changes. Type 'yes' to proceed.
 
 10. **Access Jenkins:** After the EC2 instance is provisioned, access Jenkins by connecting to the public IP address and port 8080. The Jenkins URL and the initial admin password will be displayed in the Terraform output.
+11. **Access Sonarqube:** After the EC2 instance is provisioned, access Sonarqube by connecting to the public IP address and port 9000. The Sonarqube URL and the initial admin password will be displayed in the Terraform output.
 
 ## Cleanup
 
