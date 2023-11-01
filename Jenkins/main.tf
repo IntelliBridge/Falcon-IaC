@@ -54,7 +54,7 @@ resource "null_resource" "jenkins_password" {
   provisioner "remote-exec" {
 
   inline = [
-    "while [ ! -e /var/lib/jenkins/secrets/initialAdminPassword ]; do sleep 5; done; cat /var/lib/jenkins/secrets/initialAdminPassword",
+    "sleep 420",
     "echo -e \"Jenkins URL: ${aws_instance.Jenkins.public_ip}:8080\"",
     "echo -e \"Jenkins Admin Password: $(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)\"",
     "echo -e \"Sonarqube URL: ${aws_instance.Jenkins.public_ip}:9000\"",
